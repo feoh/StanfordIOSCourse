@@ -11,7 +11,7 @@ import Foundation
 class Concentration
 {
     var cards = [Card]()
-    
+    var initialNumberOfPairsOfCards = -1
     var indexOfOneAndOnlyFaceUpCard: Int?
     
     func chooseCard(at index: Int) {
@@ -36,6 +36,12 @@ class Concentration
     }
 
     func newGame(numberOfPairsOfCards: Int) {
+        if initialNumberOfPairsOfCards == -1 {
+           initialNumberOfPairsOfCards = numberOfPairsOfCards
+        }
+
+        cards = [Card]()
+
         let totalCards = numberOfPairsOfCards * 2
         for _ in 1...numberOfPairsOfCards {
             let card = Card()
